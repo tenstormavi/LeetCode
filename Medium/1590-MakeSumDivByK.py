@@ -33,6 +33,10 @@ Constraints:
 
 class Solution:
     def minSubarray(self, nums: List[int], p: int) -> int:
+        # (total_sum - prefix_sum)%p = 0
+        # (total_sum - (psum[j] - psum[i]))%p = 0
+        # tota_sum%p - psum[j]%p + psum[i]%p = 0
+        # psum[i]%p = psum[j]%p - total_sum%p
         n = len(nums)
         min_len = n
         mod = sum(nums) % p
