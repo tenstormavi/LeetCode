@@ -41,7 +41,7 @@ class Solution:
                 nums[medium], nums[high] = nums[high], nums[medium]
                 high -= 1
 
-        # Approach: Using sorting - Merge Sort (O(nLogn)), Bubble sort(O(n^2))
+        # Approach: Using sorting - Merge Sort, Bubble sort
         # for i in range(len(nums)):
         #     for j in range(0, len(nums)-i-1):
         #         if nums[j] > nums[j+1]:
