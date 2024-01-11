@@ -26,6 +26,7 @@ Constraints:
 # Approach 2: Log Operation - if a number is power of 2. Then Log2(N) will be an integer number so
 # ceil and floor value will be same.
 # And modulus of an integer with 1 will always be 0 so that can be another answer.
+# Complexity - O((1))
 
 import math
 
@@ -36,8 +37,13 @@ class Solution:
             return False
 
         # Solution 1
-        # cal = math.log2(n)
-        # return True if math.ceil(cal)==math.floor(cal) else False
+        while n % 2 == 0:
+            n /= 2
+        return n == 1
 
         # Solution 2
+        cal = math.log2(n)
+        return True if math.ceil(cal)==math.floor(cal) else False
+
+        # Solution 3
         return math.log2(n) % 1 == 0

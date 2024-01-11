@@ -27,7 +27,7 @@ Constraints:
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        # Approach: length (end - start + 1) - max_occurance_char <= k --> shift end else start
+        # Approach: length of window (end - start + 1) - max_occurance_char <= k --> shift end else start
         max_len = start = end = 0
         d = {}
         while end < len(s):
