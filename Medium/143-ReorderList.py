@@ -31,10 +31,9 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head:
-            return head
 
         def reverse(head, prev=None):
+            cur = None
             while head:
                 cur = head
                 head = head.next
@@ -42,22 +41,45 @@ class Solution:
                 prev = cur
             return cur
 
-        def find_mid(head):
-            slow = fast = head
-            while fast and fast.next:
-                slow = slow.next
-                fast = fast.next.next
-            return slow
+        def merge(first, second):
+            if not first or not second:
+                return
 
-        mid = find_mid(head)
-        second = reverse(mid)
+            first_next = first.next
+            second_next = second.next
 
+            first.next = second
+            if first_next:
+                second.next = first_next
+
+            merge(first_next, second_next)
+
+
+        if not head:
+            return head
+
+        slow = fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # Split the list into two halves
+        second = slow.next
+        slow.next = None
+
+        # Reverse the second half
+        reversed_second = reverse(second)
+
+        # Solution: Iterative
         cur = head
-        while second.next:
+        while reversed_second:
             next = cur.next
-            cur.next = second
+            cur.next = reversed_second
             cur = next
 
-            p_next = second.next
-            second.next = next
-            second = p_next
+            reversed_second_next = reversed_second.next
+            reversed_second.next = next
+            reversed_second = reversed_second_next
+
+            # Solution: Recursive
+        merge(head, reversed_second)
