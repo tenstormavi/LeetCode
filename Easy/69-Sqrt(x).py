@@ -20,6 +20,22 @@ Constraints:
 
 class Solution:
     def mySqrt(self, x: int) -> int:
+        # Solution 1:
+        res = 0
+        first, last = 0, x
+        while first <= last:
+            mid = first + (last - first) // 2
+            if mid ** 2 == x:
+                return mid
+            elif mid ** 2 > x:
+                last = mid - 1
+            else:
+                first = mid + 1
+                # Could be our solution so saving
+                res = mid
+        return res
+
+        # Solution 2:
         if x == 0:
             return 0
         first, last = 1, x
