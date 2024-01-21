@@ -44,12 +44,13 @@ class Solution:
         # once eg [2,6,7,8]
         # 2. Remove the duplicates from the array. eg [2,3,3,4]
 
+        # Explanation: https://www.youtube.com/watch?v=4G8puv5PcV0&ab_channel=C0deSutra
+
         length = len(nums)
         nums = sorted(set(nums))
         res = length
         end = start = 0
         while start < length:
-            # R = nums[start], nums[start] + len(nums) - 1
             while end < len(nums) and nums[end] < nums[start] + length:
                 end += 1
             res = min(res, length - (end - start))
