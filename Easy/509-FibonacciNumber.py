@@ -27,6 +27,21 @@ Constraints:
 
 class Solution:
     def fib(self, n: int) -> int:
+        # Approach: Memoization -> DP
+        self.result = [0] * (n + 1)
+        def fibo(n):
+            if n <= 1:
+                return n
+
+            if self.result[n] != 0:
+                return self.result[n]
+            else:
+                self.result[n] = fibo(n - 1) + fibo(n - 2)
+                return self.result[n]
+
+        return fibo(n)
+
+        # Approach -> Recursive
         # Base Case
         if n == 0:
             return 0
