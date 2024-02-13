@@ -28,6 +28,17 @@ class Solution:
     memo = collections.defaultdict(int)
 
     def climbStairs(self, n: int) -> int:
+        # Create the decision tree to get the answer:
+        # https://www.youtube.com/watch?v=Y0lT9Fck7qI&list=PLot-Xpze53lcvx_tjrr_m2lgD2NsRHlNO&index=2&ab_channel=NeetCode
+
+        # Approach: Top Down
+        one, two = 1, 1
+        for i in range(n - 1):
+            temp = one
+            one = one + two
+            two = temp
+        return one
+
         # Approach: Tabulation (Bottom-Up)
         self.memo[1] = 1
         self.memo[2] = 2
