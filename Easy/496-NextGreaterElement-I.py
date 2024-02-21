@@ -35,9 +35,9 @@ Follow up: Could you find an O(nums1.length + nums2.length) solution?
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         # Solution O(nums1.length + nums2.length)
-        # Approach: if a number in num2 is greater than any previous number than it will be greater f
-        # or all the number previously occurred. eg [2,1,3,4] take eg. of 3 it is greater than 2 as well as 1.
-        # # Als0 given numbers in nums2 are unique.
+        # Approach: if a number in num2 is greater than any previous number than it will be greater
+        # for all the number previously occurred. eg [2,1,3,4] take eg. of 3 it is greater than 2 as well as 1.
+        # # Also given numbers in nums2 are unique.
         nums1Idx = {n: i for i, n in enumerate(nums1)}
         res = [-1] * len(nums1)
 
