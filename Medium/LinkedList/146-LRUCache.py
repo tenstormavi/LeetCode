@@ -76,7 +76,7 @@ class LRUCache:
 
         # Searching and re-ordering in an array would take O(N) time.
         # Optimization 1 -> Eliminate shifting (Use Linked list instead of array),
-        # but to move eaily left and right we will use Doubly Linked List. Shifting time now is O(1).
+        # but to move easily left and right we will use Doubly Linked List. Shifting time now is O(1).
         # Optimization 2 -> Optimise search (Use hash) to search in O(1) time.
 
         if key in self.cache:
