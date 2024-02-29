@@ -49,7 +49,7 @@ class Solution:
                 #     result.append(node.val)
 
                 # Right view condition
-                if i == level_size - 1:
+                if i == level_size - 1: # i == n
                     result.append(node.val)
 
                 if node.left:
