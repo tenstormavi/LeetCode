@@ -36,7 +36,7 @@ Constraints:
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         # Approach: Can't use the approach of Coin Change (LC 322) as 2,2,1 and 2,1,2 is counted as 1.
-        # No duplicates is allowed in the question.
+        # No duplicates are allowed in the question.
 
         ## Recursion + Memoization
         def solve(idx, amount, dp):

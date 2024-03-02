@@ -33,7 +33,7 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
 
         ## Bottom-Up: Tabulation
-        dp = [amount + 1] * (amount + 1)
+        dp = [float('inf')] * (amount + 1)
         dp[0] = 0
         for amt in range(1, amount + 1):
             # build the amount with all possible given coins
@@ -41,7 +41,7 @@ class Solution:
                 if amt - coin >= 0:
                     dp[amt] = min(dp[amt], 1 + dp[amt - coin])
         # return only if it doesn't store the default value
-        return dp[amount] if dp[amount] != amount + 1 else -1
+        return dp[amount] if dp[amount] != float('inf') else -1
 
         ## Top-Down
         ## Approach: At each stage, 3 choices are available. Use all the choices one

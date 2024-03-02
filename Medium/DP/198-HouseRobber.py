@@ -87,6 +87,11 @@ class Solution:
                 # Size of array is 1; max sum is that element only
                 nums[0]
 
+            # Approach: There are two choices at every index either include the
+            # current index or exclude the current index. If current index is included
+            # its value will get added and index will jump 2 (i+2 or n-2) times as adjacent value is
+            # not allowed to take. if Current index is not included its sum will not get added and
+            # index will jump only 1 (i+1 or n-1) as taking adjacent value is possible now.
             incl = solv(nums, n - 2) + nums[n]
             excl = solv(nums, n - 1) + 0
 
