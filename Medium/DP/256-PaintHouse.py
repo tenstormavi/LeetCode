@@ -28,7 +28,7 @@ Constraints:
 
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-        # Tabulation - Bottom up
+        ########### Tabulation - Bottom up
         # costs[i][j] i is house, j is color
 
         # By observation, it only depends on previous row
@@ -42,7 +42,28 @@ class Solution:
 
         return min(dp)
 
-        # Recursion - TLE
+
+        ######## Recursion + Memoization
+        def solveRec(i, prevColor, dp):
+            # Base case
+            if i == len(costs):
+                return 0
+
+            if dp[i][prevColor] != -1:
+                return dp[i][prevColor]
+
+            res = float('inf')
+            for color in range(3):
+                if color != prevColor:
+                    res = min(res, costs[i][color] + solveRec(i + 1, color, dp))
+            dp[i][prevColor] = res
+            return res
+
+        dp = [[-1] * (len(costs[0]) + 1) for _ in range(len(costs) + 1)]
+        return solveRec(0, -1, dp)
+
+
+        ########## Recursion - TLE
         def solveRec(i, prevColor):
             # Base case
             if i == len(costs):
